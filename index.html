@@ -1,119 +1,159 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="htmlTag">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عيادة الدكتور - الاستشارة الطبية وحجز المواعيد</title>
+    <title>عيادة النخبة الطبية | Cabinet Médical d'Élite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0284c7; /* أزرق طبي بارد */
+            --primary: #0284c7;
             --primary-dark: #0369a1;
-            --secondary-color: #f0f9ff;
-            --text-color: #334155;
-            --white: #ffffff;
-            --gray-light: #f8fafc;
-            --border-color: #cbd5e1;
+            --primary-light: #e0f2fe;
+            --accent: #10b981;
+            --accent-hover: #059669;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 10px 30px rgba(0,0,0,0.06);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Tajawal', sans-serif;
         }
 
         body {
-            background-color: var(--gray-light);
-            color: var(--text-color);
-            line-height: 1.6;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.7;
+            min-height: 100vh;
         }
 
-        /* شريط اللغات العلوي */
+        /* شريط علوي */
         .top-bar {
-            background-color: #0f172a;
-            color: var(--white);
-            padding: 8px 20px;
+            background: #0f172a;
+            color: #f1f5f9;
+            padding: 12px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .lang-switch {
-            background: var(--primary-color);
-            color: var(--white);
+        .lang-btn {
+            background: var(--primary);
+            color: white;
             border: none;
-            padding: 4px 10px;
-            border-radius: 4px;
+            padding: 6px 16px;
+            border-radius: 20px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
         }
 
-        /* رأس الصفحة */
+        .lang-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* رأس الصفحة الفخم */
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: var(--white);
+            background: linear-gradient(135deg, #0f172a 0%, #0284c7 100%);
+            color: white;
             text-align: center;
-            padding: 50px 20px;
+            padding: 70px 20px 90px 20px;
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.15);
         }
 
         header h1 {
-            font-size: 2.4rem;
+            font-size: 2.8rem;
+            font-weight: 900;
             margin-bottom: 10px;
         }
 
         header p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
         }
 
+        /* الحاوية الرئيسية */
         .container {
             max-width: 900px;
-            margin: 30px auto;
+            margin: -50px auto 50px auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 10;
         }
 
-        /* بطاقة معلومات العيادة */
+        /* بطاقات المعلومات الثلاثية */
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .info-card {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            background: var(--card-bg);
+            padding: 25px 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
             text-align: center;
-            border-top: 4px solid var(--primary-color);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .info-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            background: var(--primary-light);
+            display: inline-block;
+            padding: 12px;
+            border-radius: 50%;
         }
 
         .info-card h3 {
             color: var(--primary-dark);
-            margin-bottom: 8px;
             font-size: 1.2rem;
+            margin-bottom: 6px;
+            font-weight: 700;
         }
 
         .info-card p {
-            color: #64748b;
-            font-size: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
-        /* استمارة الحجز */
-        .booking-section {
-            background: var(--white);
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        /* قسم الاستمارة الاحترافي */
+        .booking-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
         }
 
-        .booking-section h2 {
+        .booking-card h2 {
             color: var(--primary-dark);
-            margin-bottom: 20px;
-            font-size: 1.6rem;
             text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-weight: 800;
         }
 
         .form-group {
@@ -123,72 +163,250 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: bold;
-            color: #1e293b;
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 1rem;
         }
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
             font-size: 1rem;
             outline: none;
-            transition: 0.3s;
+            background: #fafafa;
+            color: var(--text-main);
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus, .form-group select:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 5px rgba(2, 132, 199, 0.3);
+            border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
         }
 
         .btn-submit {
-            background-color: #25d366;
-            color: var(--white);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: white;
             border: none;
             width: 100%;
-            padding: 14px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 6px;
+            padding: 16px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: 12px;
             cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .btn-submit:hover {
-            background-color: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(16, 185, 129, 0.4);
         }
 
+        /* قسم الاتصال السريع */
         .quick-contact {
-            margin-top: 20px;
+            margin-top: 30px;
             text-align: center;
+            padding-top: 20px;
+            border-top: 2px dashed var(--border);
         }
 
-        .call-btn {
-            display: inline-block;
-            background: var(--secondary-color);
+        .quick-contact p {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .call-link {
             color: var(--primary-dark);
-            padding: 10px 20px;
-            border-radius: 6px;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: bold;
-            margin-top: 10px;
-            border: 1px solid var(--primary-color);
+            background: var(--primary-light);
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            transition: all 0.3s ease;
         }
 
+        .call-link:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* التذييل */
         footer {
             text-align: center;
-            padding: 25px;
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-top: 40px;
-            background: #e2e8f0;
+            padding: 30px;
+            background: #0f172a;
+            color: #94a3b8;
+            margin-top: 50px;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .booking-card { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- شريط اللغات والعنوان المزدوج -->
-    <div
-      
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <span id="topTitle">🏥 عيادة النخبة الطبية المتخصصة</span>
+        <button class="lang-btn" onclick="switchLang()">🌐 Français / العربية</button>
+    </div>
+
+    <!-- رأس الصفحة -->
+    <header>
+        <h1 id="mainTitle">عيادة النخبة الطبية</h1>
+        <p id="mainDesc">رعاية صحية متكاملة بمعايير عالمية لراحة صحتكم وسلامتكم.</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- بطاقات المعلومات -->
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">📍</div>
+                <h3 id="c1Title">العنوان الرئيسي</h3>
+                <p id="c1Text">شارع الشهداء، عمارة 12، الجزائر العاصمة</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🕒</div>
+                <h3 id="c2Title">أوقات العمل</h3>
+                <p id="c2Text">السبت إلى الخميس: 08:00 - 17:00</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">💰</div>
+                <h3 id="c3Title">سعر الاستشارة</h3>
+                <p id="c3Text">2000 دج (تشمل الفحص الكامل)</p>
+            </div>
+        </div>
+
+        <!-- استمارة الحجز -->
+        <div class="booking-card">
+            <h2 id="formTitle">حجز موعد إلكتروني فوري</h2>
+            
+            <form onsubmit="sendWhatsApp(event)">
+                <div class="form-group">
+                    <label id="labelName" for="name">الاسم الكامل للمريض:</label>
+                    <input type="text" id="name" required placeholder="أدخل اسمك الكامل هنا">
+                </div>
+
+                <div class="form-group">
+                    <label id="labelPhone" for="phone">رقم الهاتف:</label>
+                    <input type="tel" id="phone" required placeholder="مثال: 0773572149">
+                </div>
+
+                <div class="form-group">
+                    <label id="labelService" for="service">نوع الاستشارة أو الخدمة:</label>
+                    <select id="service">
+                        <option value="استشارة عامة">استشارة عامة (Consultation Générale)</option>
+                        <option value="متابعة وفحص">متابعة وفحص دوري (Suivi et Examen)</option>
+                        <option value="فحص دقيق وتخصصي">فحص دقيق وتخصصي (Examen Spécialisé)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label id="labelDate" for="date">التاريخ المرغوب للموعد:</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <button type="submit" class="btn-submit" id="btnText">
+                    <span>تأكيد الحجز عبر الواتساب للعيادة</span> 💬
+                </button>
+            </form>
+
+            <div class="quick-contact">
+                <p id="callLabel">أو تواصل معنا مباشرة عبر المكالمة الهاتفية:</p>
+                <a href="tel:0773572149" class="call-link">📞 0773572149</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="footerText">
+        جميع الحقوق محفوظة © 2026 - نظام حجز المواعيد الطبي المطور
+    </footer>
+
+    <script>
+        let lang = 'ar';
+
+        function switchLang() {
+            lang = lang === 'ar' ? 'fr' : 'ar';
+            const html = document.getElementById('htmlTag');
+            
+            if (lang === 'fr') {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', 'fr');
+                document.getElementById('topTitle').innerText = "🏥 Cabinet Médical d'Élite";
+                document.getElementById('mainTitle').innerText = "Cabinet Médical d'Élite";
+                document.getElementById('mainDesc').innerText = "Soins de santé complets aux normes internationales pour votre confort.";
+                
+                document.getElementById('c1Title').innerText = "Adresse Principale";
+                document.getElementById('c1Text').innerText = "Rue des Martyrs, Bâtiment 12, Alger";
+                document.getElementById('c2Title').innerText = "Horaires de Travail";
+                document.getElementById('c2Text').innerText = "Samedi au Jeudi : 08:00 - 17:00";
+                document.getElementById('c3Title').innerText = "Prix de Consultation";
+                document.getElementById('c3Text').innerText = "2000 DZD (Examen complet inclus)";
+
+                document.getElementById('formTitle').innerText = "Réservation de Rendez-vous en Ligne";
+                document.getElementById('labelName').innerText = "Nom complet du patient :";
+                document.getElementById('name').placeholder = "Entrez votre nom complet ici";
+                document.getElementById('labelPhone').innerText = "Numéro de téléphone :";
+                document.getElementById('phone').placeholder = "Ex: 0773572149";
+                document.getElementById('labelService').innerText = "Type de consultation :";
+                document.getElementById('labelDate').innerText = "Date souhaitée :";
+                document.getElementById('btnText').innerHTML = "<span>Confirmer le RDV via WhatsApp</span> 💬";
+                
+                document.getElementById('callLabel').innerText = "Ou contactez-nous directement par appel :";
+                document.getElementById('footerText').innerText = "Tous droits réservés © 2026 - Système de Rendez-vous Médical";
+            } else {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+                document.getElementById('topTitle').innerText = "🏥 عيادة النخبة الطبية المتخصصة";
+                document.getElementById('mainTitle').innerText = "عيادة النخبة الطبية";
+                document.getElementById('mainDesc').innerText = "رعاية صحية متكاملة بمعايير عالمية لراحة صحتكم وسلامتكم.";
+                
+                document.getElementById('c1Title').innerText = "العنوان الرئيسي";
+                document.getElementById('c1Text').innerText = "شارع الشهداء، عمارة 12، الجزائر العاصمة";
+                document.getElementById('c2Title').innerText = "أوقات العمل";
+                document.getElementById('c2Text').innerText = "السبت إلى الخميس: 08:00 - 17:00";
+                document.getElementById('c3Title').innerText = "سعر الاستشارة";
+                document.getElementById('c3Text').innerText = "2000 دج (تشمل الفحص الكامل)";
+
+                document.getElementById('formTitle').innerText = "حجز موعد إلكتروني فوري";
+                document.getElementById('labelName').innerText = "الاسم الكامل للمريض:";
+                document.getElementById('name').placeholder = "أدخل اسمك الكامل هنا";
+                document.getElementById('labelPhone').innerText = "رقم الهاتف:";
+                document.getElementById('phone').placeholder = "مثال: 0773572149";
+                document.getElementById('labelService').innerText = "نوع الاستشارة أو الخدمة:";
+                document.getElementById('labelDate').innerText = "التاريخ المرغوب للموعد:";
+                document.getElementById('btnText').innerHTML = "<span>تأكيد الحجز عبر الواتساب للعيادة</span> 💬";
+                
+                document.getElementById('callLabel').innerText = "أو تواصل معنا مباشرة عبر المكالمة الهاتفية:";
+                document.getElementById('footerText').innerText = "جميع الحقوق محفوظة © 2026 - نظام حجز المواعيد الطبي المطور";
+            }
+        }
+
+        function sendWhatsApp(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            
+            const url = `https://wa.me/213773572149?text=مرحباً، أريد حجز موعد جديد:%0A- الاسم: ${name}%0A- الهاتف: ${phone}%0A- الخدمة: ${service}%0A- التاريخ: ${date}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
