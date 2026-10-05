@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Coach - Coaching & Nutrition en Ligne</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0f0f0f;
+            color: #f1f1f1;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        header h1 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        header h1 span {
+            color: #00ff88;
+        }
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+        .btn {
+            background: #00ff88;
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #00cc6a;
+            transform: scale(1.05);
+        }
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        .section-title span {
+            color: #00ff88;
+        }
+        /* About Me */
+        .about-grid {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        .about-text h3 {
+            margin-bottom: 15px;
+            color: #00ff88;
+            font-size: 1.5rem;
+        }
+        /* Programmes */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 4px solid #00ff88;
+            text-align: center;
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        .card p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        /* Témoignages */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .testimonial-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            font-style: italic;
+            color: #ddd;
+            border-left: 4px solid #00ff88;
+        }
+        .testimonial-card h4 {
+            margin-top: 15px;
+            font-style: normal;
+            color: #00ff88;
+            font-size: 1rem;
+        }
+        /* FAQ */
+        .faq-item {
+            background: #1a1a1a;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .faq-item h4 {
+            color: #00ff88;
+            margin-bottom: 8px;
+        }
+        .faq-item p {
+            color: #bbb;
+        }
+        /* Formulaire WhatsApp */
+        .form-container {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #2a2a2a;
+            color: #fff;
+        }
+        .whatsapp-btn {
+            width: 100%;
+            padding: 15px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .whatsapp-btn:hover {
+            background: #20ba5a;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #0b0b0b;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        @media(max-width: 768px) {
+            .about-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Accueil -->
+    <header>
+        <h1>Transforme ton corps avec <span>Elite Coach</span></h1>
+        <p>Des programmes de nutrition et d'entraînement sur-mesure pour atteindre tes objectifs, que ce soit à la maison ou à la salle.</p>
+        <a href="#contact" class="btn">Commencer Maintenant</a>
+    </header>
+
+    <!-- À Propos de Moi -->
+    <section>
+        <h2 class="section-title">À <span>Propos</span></h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Coach Sportif & Nutritionniste</h3>
+                <p>Salut ! Je suis ton coach. Fort de plusieurs années d'expérience dans l'accompagnement physique, j'ai aidé des dizaines de personnes à changer leur mode de vie, perdre du gras et gagner en masse musculaire grâce à des méthodes scientifiques et 100% personnalisées.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programmes -->
+    <section>
+        <h2 class="section-title">Nos <span>Programmes</span></h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Programme Nutrition</h3>
+                <p>Calcul des calories, répartition des macros (Protéines, Glucides, Lipides) et plans alimentaires adaptés à ton budget et tes goûts.</p>
+            </div>
+            <div class="card">
+                <h3>Programme Entraînement</h3>
+                <p>Séances structurées pour la musculation ou le fitness, avec des guides vidéo et un suivi de progression régulier.</p>
+            </div>
+            <div class="card">
+                <h3>Suivi VIP 1on1</h3>
+                <p>Un accompagnement complet et rapproché 7j/7 sur WhatsApp pour garantir tes résultats le plus rapidement possible.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section>
+        <h2 class="section-title">Avis des <span>clients</span></h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p>"Grâce au programme de nutrition et de sport, j'ai perdu 8kg en 2 mois sans me priver. Le suivi sur WhatsApp motive énormément !"</p>
+                <h4>- Karim M.</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"Un coach à l'écoute, les plans alimentaires sont faciles à suivre et adaptés à notre vie en Algérie. Je recommande à 100%."</p>
+                <h4>- Yacine B.</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+        <h2 class="section-title">Questions <span>Fréquentes</span></h2>
+        <div class="faq-item">
+            <h4>Comment se fait le suivi ?</h4>
+            <p>Le suivi se fait entièrement en ligne via WhatsApp, où on discute de tes progrès chaque semaine pour ajuster le programme si besoin.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Est-ce que les régimes sont adaptés aux produits disponibles chez nous ?</h4>
+            <p>Oui, tout à fait ! Les plans de nutrition utilisent des aliments simples, locaux et disponibles partout.</p>
+        </div>
+    </section>
+
+    <!-- Formulaire et WhatsApp -->
+    <section id="contact">
+        <div class="form-container">
+            <h2 class="section-title" style="margin-bottom: 20px;">Prêt à <span>Commencer ?</span></h2>
+            <p style="text-align: center; color: #aaa; margin-bottom: 30px;">Remplis ce formulaire pour m'envoyer tes infos directement sur WhatsApp :</p>
+            
+            <form id="whatsappForm">
+                <div class="form-group">
+                    <label>Nom et Prénom :</label>
+                    <input type="text" id="fullName" placeholder="Ex: Amine Ben" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Ton Objectif :</label>
+                    <select id="goal">
+                        <option value="Perte de poids / Sèche">Perte de poids / Sèche</option>
+                        <option value="Prise de masse musculaire">Prise de masse musculaire</option>
+                        <option value="Remise en forme générale">Remise en forme générale</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Remarques (Poids, taille, blessures...) :</label>
+                    <textarea id="notes" rows="3" placeholder="Ex: 1m75, 80kg, pas de salle de sport..."></textarea>
+                </div>
+
+                <button type="button" class="whatsapp-btn" onclick="sendToWhatsApp()">
+                    Envoyer ma demande sur WhatsApp 📱
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Elite Coach. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Script JavaScript pour le WhatsApp -->
+    <script>
+        function sendToWhatsApp() {
+            // ⚠️ حط رقم الواتساب ديزك هنا بدون علامة + (مثال: 213700000000)
+            const phoneNumber = "213555555555"; 
+
+            const fullName = document.getElementById('fullName').value;
+            const goal = document.getElementById('goal').value;
+            const notes = document.getElementById('notes').value;
+
+            if (!fullName) {
+                alert("من فضلك أدخل الاسم واللقب على الأقل!");
+                return;
+            }
+
+            const message = `Bonjour Coach, je souhaite m'inscrire au programme :\n\n` +
+                            `- *Nom:* ${fullName}\n` +
+                            `- *Objectif:* ${goal}\n` +
+                            `- *Infos/Notes:* ${notes || 'Aucune'}`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
